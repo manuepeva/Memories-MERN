@@ -1,11 +1,26 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core'
 import memories from './img/memories.png'
 import Posts from './components/Posts/Posts'
 import Form from './components/Form/Form'
 import makeStyles from './styles'
+import {useDispatch} from 'react-redux'
+import {getPosts} from './redux/actions/postActions'
+
+Container.muiName = 'Container'
+AppBar.muiName = 'AppBar'
+Typography.muiName = 'Typography'
+Grow.muiName = 'Grow'
+Grid.muiName = 'Grid'
+
+
 const App = () => {
     const classes = makeStyles()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getPosts())
+    }, [dispatch])
     return (
         <Container maxWidth="lg">
             <AppBar className={classes.appBar} position="static" color="inherit">

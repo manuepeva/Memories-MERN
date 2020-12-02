@@ -1,9 +1,12 @@
 import React from 'react'
 import Post from './Post/Post'
-import makeStyles from './styles'
+import useStyles  from './styles'
+import {useSelector} from 'react-redux'
 
 const Posts = () => {
-    const classes = makeStyles()
+    const posts = useSelector((state)=> state.posts)
+    const classes = useStyles()
+    console.log(posts)
     return (
         <div>
            <h1>POSTS</h1>
