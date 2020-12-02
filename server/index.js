@@ -13,7 +13,7 @@ app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 
 // Connecting to DB
-const CONNECTION_URL = 'mongodb+srv://ILD3UCfZmAizIzZ6:iDzaOIM62N74xjkJ@cluster0.12kcg.mongodb.net'
+const CONNECTION_URL = 'mongodb+srv://ILD3UCfZmAizIzZ6:iDzaOIM62N74xjkJ@cluster0.12kcg.mongodb.net/Memories-MERN?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 1000
 
 mongoose.connect(CONNECTION_URL, {
@@ -24,3 +24,4 @@ mongoose.connect(CONNECTION_URL, {
 .catch((error) => console.log(error.message))
 
 mongoose.set('useFindAndModify', false)
+

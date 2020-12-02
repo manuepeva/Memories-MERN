@@ -7,6 +7,12 @@ import makeStyles from './styles'
 import {useDispatch} from 'react-redux'
 import {getPosts} from './redux/actions/postActions'
 
+Container.muiName = 'Container'
+AppBar.muiName = 'AppBar'
+Typography.muiName = 'Typography'
+Grow.muiName = 'Grow'
+Grid.muiName = 'Grid'
+
 
 const App = () => {
     const classes = makeStyles()
