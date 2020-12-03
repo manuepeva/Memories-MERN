@@ -3,7 +3,7 @@ import useStyles from './styles'
 import {TextField, Button, Typography, Paper} from '@material-ui/core'
 import FileBase from 'react-file-base64'
 import {useDispatch} from 'react-redux'
-import { createPost } from '../../api'
+import { createPost } from '../../redux/actions/postActions'
 
 TextField.muiName = 'TextField'
 Button.muiName = 'Button'
@@ -13,9 +13,9 @@ Paper.muiName = 'Paper'
 
 const Form = () => {
   const [postData, setPostData] = useState({
-    creator: '',
     title: '',
     message: '',
+    creator: '',
     tags: '',
     selectedFile: ''
   })
@@ -23,19 +23,17 @@ const Form = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch({
-      type: 'CREATE',
-      payload: postData
-    })
+    dispatch(createPost(postData))
+    console.log(postData, 'here create post')
   }
 
   const clear = () => {
 
   }
     return (
-        <Paper className="classes.paper">
+        <Paper className={classes.paper}>
           <form autoComplete="off" noValidate 
           className={`${classes.root} ${classes.form}`}
           onSubmit={handleSubmit}>
