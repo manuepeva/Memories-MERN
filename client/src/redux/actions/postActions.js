@@ -1,5 +1,5 @@
 import * as api from '../../api'
-
+import {CREATE} from '../types'
 // Actions Creators 
 export const getPosts = () => async (dispatch) => {
     try {
@@ -17,10 +17,10 @@ export const createPost = (post) => async (dispatch) => {
     try {
         const {data} = await api.createPost(post)
         dispatch({
-            type: 'CREATE',
+            type: CREATE,
             payload: data
         })
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }
