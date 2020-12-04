@@ -18,10 +18,10 @@ const PORT = process.env.PORT || 1000
 
 mongoose.connect(CONNECTION_URL, {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false
 }).then(() => app.listen(PORT, () => console.log(`Server Running on port: ${PORT}, and MongoDB Connected`)))
 .catch((error) => console.log(error.message))
 
-mongoose.set('useFindAndModify', false)
 

@@ -3,12 +3,8 @@ import useStyles from './styles'
 import {TextField, Button, Typography, Paper} from '@material-ui/core'
 import FileBase from 'react-file-base64'
 import {useDispatch} from 'react-redux'
-import { createPost } from '../../redux/actions/postActions'
+import { createNPost } from '../../redux/actions/postActions'
 
-TextField.muiName = 'TextField'
-Button.muiName = 'Button'
-Typography.muiName = 'Typography'
-Paper.muiName = 'Paper'
 
 
 const Form = () => {
@@ -22,11 +18,11 @@ const Form = () => {
 
   const classes = useStyles()
   const dispatch = useDispatch()
+  console.log(postData, 'postdata from postdata compo')
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(createPost(postData))
-    console.log(postData, 'here create post')
+    e.preventDefault();
+    dispatch(createNPost(postData))
   }
 
   const clear = () => {

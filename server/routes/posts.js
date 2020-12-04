@@ -5,7 +5,6 @@ const router = express.Router()
 // First route
 router.get('/', getPosts)
 
-
 router.post('/', createPost)
 
 router.patch('/:id', updatePost)
