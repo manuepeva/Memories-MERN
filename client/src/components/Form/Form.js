@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import useStyles from './styles'
 import {TextField, Button, Typography, Paper} from '@material-ui/core'
 import FileBase from 'react-file-base64'
 import {useDispatch} from 'react-redux'
 import { createNPost, updatePost } from '../../redux/actions/postActions'
-
+import {useSelector} from 'react-redux'
 
 
 const Form = ({currentId, setCurrentId}) => {
@@ -16,17 +16,25 @@ const Form = ({currentId, setCurrentId}) => {
     selectedFile: ''
   })
 
+  const post = useSelector(state => 
+  currentId ? state.posts.find((p) => p._id === currentId): null)
+
+
+
   const classes = useStyles()
   const dispatch = useDispatch()
-  console.log(postData, 'postdata from postdata compo')
+
+  useEffect(() => {
+    if(post) setPostData(post)
+  }, [post])
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (currentId) {
       dispatch(updatePost(currentId, postData))
     }else {
       dispatch(createNPost(postData))
     }
-    e.preventDefault();
   }
 
   const clear = () => {
