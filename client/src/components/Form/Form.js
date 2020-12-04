@@ -3,11 +3,11 @@ import useStyles from './styles'
 import {TextField, Button, Typography, Paper} from '@material-ui/core'
 import FileBase from 'react-file-base64'
 import {useDispatch} from 'react-redux'
-import { createNPost } from '../../redux/actions/postActions'
+import { createNPost, updatePost } from '../../redux/actions/postActions'
 
 
 
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
   const [postData, setPostData] = useState({
     title: '',
     message: '',
@@ -21,8 +21,12 @@ const Form = () => {
   console.log(postData, 'postdata from postdata compo')
 
   const handleSubmit = (e) => {
+    if (currentId) {
+      dispatch(updatePost(currentId, postData))
+    }else {
+      dispatch(createNPost(postData))
+    }
     e.preventDefault();
-    dispatch(createNPost(postData))
   }
 
   const clear = () => {
