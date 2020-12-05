@@ -42,10 +42,10 @@ export default makeStyles((theme) => ({
         margin: '20px'
     },
     title: {
-        padding: '0 16px',
+        // padding: '0 16px',
     },
     title2:{
-        paddingLeft: '5vh'
+        paddingLeft: '2vh'
     },
     cardActions: {
         padding: '0 16px 8px 16px',
