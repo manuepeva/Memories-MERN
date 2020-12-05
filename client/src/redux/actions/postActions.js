@@ -1,7 +1,7 @@
 import * as api from '../../api'
 import {createNewPost} from '../../api'
 import {fetchPost} from '../../api'
-import {CREATE, FETCH_ALL, UPDATE} from '../types'
+import {CREATE, FETCH_ALL, UPDATE, DELETE} from '../types'
 // Actions Creators 
 export const getPosts = () => async (dispatch) => {
     try {
@@ -36,6 +36,18 @@ export const updatePost = (id, post) => async (dispatch) =>{
         dispatch({
             type: UPDATE,
             payload: data
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deletePost = (id) => async (dispatch) => {
+    try {
+        await api.deletePost(id)
+        dispatch({
+            type: DELETE,
+            payload: id
         })
     } catch (error) {
         console.log(error)
