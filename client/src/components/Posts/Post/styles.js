@@ -43,7 +43,9 @@ export default makeStyles((theme) => ({
     },
     title: {
         padding: '0 16px',
-        paddingLeft: '2vh'
+    },
+    title2:{
+        paddingLeft: '5vh'
     },
     cardActions: {
         padding: '0 16px 8px 16px',
