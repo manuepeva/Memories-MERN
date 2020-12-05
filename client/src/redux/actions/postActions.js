@@ -31,12 +31,13 @@ export const createNPost = (post) => async (dispatch) => {
 
 export const updatePost = (id, post) => async (dispatch) =>{
     try {
-        const {data } =  await api.updatePost(id, post)
+        const { data } =  await api.updatePost(id, post)
+        console.log(id, 'from actions')
         dispatch({
             type: UPDATE,
             payload: data
         })
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 }
